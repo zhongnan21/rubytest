@@ -1,0 +1,3 @@
+/jazz/j0001.mp3     | 3:22 | Fats    Waller    |   Ain't Misbehanber'
+/jazz/j0002.mp3     | 4:56 | Rose    Astonish    |   Wonderful world
+/bgrass/b0001.mp3     | 5:02 | U2    Cool    |   Way step into back love

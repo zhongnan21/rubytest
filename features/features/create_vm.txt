@@ -1,0 +1,18 @@
+# features/createWorkload.feature
+Feature: CreateServer
+  I want to create a new server in the created workload.
+
+  Background:
+    Given I have login to appstack to create server
+
+  Scenario: Create a new server
+    Given I stay at previous created workload design page
+    And I click the "Create a Server" icon
+    And I click Configure
+    Then I choose the Ubuntu 10.0.4 which server id is "stack_88"
+    When I press Next
+    Then I choose the "Database" as server tier
+    And I enter "MyDatabase1" as name
+    And I enter "Create an empty server" as description
+    When I press Create
+    Then A new icon will shown at workload "Database" tier

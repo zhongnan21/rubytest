@@ -1,0 +1,41 @@
+Feature: create_wl_install_app_steps
+  I want to login to appstack home page
+
+#  Background:
+#    Given I have login to appstack
+
+  @admin
+  Scenario: Create an empty workload
+    Given I have login to appstack
+    When I click Add Workload create a new workload
+    And I have entered "CapybaraTest1" as workload name
+    And I attach an image from "tapestry.png" as Thumbnail
+    And I continue entered "Test with capybara plus cucumber" as Description
+    And I choose the "staging" as Life Cycle
+    And I choose the "cloudstack-he" as Cloud Profile
+    When I press Next step
+    And I choose "No, thanks" as Which package suits you?
+    And I continue press Next step
+    Then Summary page shows "Use Template"
+    And Summary page also shows "Hourly Cost"
+    When I press Create Workloads
+    Then the create workload result should show "CapybaraTest1"
+
+  Scenario Outline:  Now install some Apps
+    # install app to the created workload
+    Given I click New Application
+    And I scroll down to the "<AppName>" section
+    When I click subscribe which app id is <AppId>
+    Then the subscribe result should show "Install <AppName>"
+    When I click "<AppName>" at the Configuration section
+#    Then I choose the 6.0.35 as Tomcat version
+    And I click Done
+    When I click Deploy
+    Then the event log should show "Create Server"
+    And after a while the event log should show "Bootstrapping Server"
+    And finally the event log should show "Deploy Server"
+
+    Examples:
+    |AppName|AppId|Version|
+    |Tomcat |87   |6.0.35 |
+    |MySQL  |54   |default|

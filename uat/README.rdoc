@@ -1,0 +1,35 @@
+Appstack Cucumber Test Suite
+Introduction
+
+Cucumber lets software development teams describe how software should behave in plain text. The text is written in
+a business-readable domain-specific language and serves as documentation, automated tests and development-aid - all
+rolled into one format.
+
+Project Layout
+
+    features/*.feature : cucumber features
+
+    features/step_definitions/web_steps.rb : generic steps that apply to all features
+
+    features/step_definintions/[feature]_steps.rb : steps specific to an individual feature file
+
+    support/env.rb : configures the driver and the hostname to use
+
+Prerequisites
+
+    Ruby www.ruby-lang.org/en/downloads/
+
+    Ruby Gems rubygems.org/
+
+    Bundler: sudo gem install bundler rake
+
+Configuration
+
+    sudo bundle install
+
+Running Features
+
+    To run all features: rake(currently may not available)
+
+    To run a specific feature:
+    cucumber /your_path/features/create_wl_install_app_steps.feature --format html --out createWL.html

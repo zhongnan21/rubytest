@@ -1,0 +1,18 @@
+# features/decomm_workload_steps.feature
+Feature: decomm_workload_steps
+  I want to decomm some workload
+
+Background:
+  Given To copy a workload, I login to appstack
+  And I click workloads to view all my Workloads
+
+#@javascript
+Scenario: Decomm a specified workload
+  Given I try to find the workload which i want to decommission
+  And I click Decommission at the workload which name is "CapybaraTest1"
+  Then A dialog show me "Are you sure to decommission the workload [CapybaraTest1]?"
+  When I click check box for "I acknowledge all servers will be permanently terminated and this action is non-recoverable"
+  And I click check box for "I acknowledge all data residing on the servers in this workload will be lost permanently"
+  Then The OK button should shown for me
+  When I click OK
+  Then I should see "Sending request to remove"

@@ -1,0 +1,25 @@
+# features/copy_workload_steps.feature
+Feature: copy_workload_steps
+  I want to copy a workload to another cloud provider
+
+  Background:
+    Given To copy a workload, I login to appstack
+    And To copy a workload, I click workloads to view all my Workloads
+
+  Scenario: Copy a specified workload
+    Given I try to find the workload which i want to copy
+    And I click copy at the workload which name is "CapybaraTest1"
+    Then A page show title "Copy Workload" and show "From CapybaraTest1"
+    And The page should have a scene of "Select Components"
+    When I enter "Copy-CapybaraTest1" as Name
+    And I enter "Copied from CapybaraTest1 at TODAY_DATE" as Description
+    And I choose "test" as Life Cycle
+    And I choose "cloudstack-he" as Cloud Profile and choose "He3" as Location
+    When I click Select Components
+    Then The page should show the scene of "Copy to target workload?" and selected
+    And I change the Flavor to the "2nd" for first app
+    And Leave the Host Key as default
+    When I click Start Copy
+    Then I should see the elapsed time transfer-bar upon "Topology View"
+    #And I should see "Sent request to copy this workload"
+    #And I should "Operation started, this workload is being copying"
