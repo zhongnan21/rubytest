@@ -4,7 +4,7 @@ line = gets
 print line
 
 # ARGF express input file
-ARGF.each {|line| puts line if line =~ /Perl/}
+ARGF.each {|line| puts line if line =~ /Perl1/}
 # ARGF.grep(/Ruby/)
 
 
